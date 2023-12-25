@@ -7,6 +7,21 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>vue2-element-ui-system</title>
   </head>
+  <script>
+    // 利用rem 进行屏幕自适应  
+    const  minPx = 1000
+    function linstener(){
+      let width = document.documentElement.clientWidth || document.body.clientWidth;
+      if(width<=minPx){
+        width=minPx
+      }
+      const ratio = width / 1920;
+      const fontSize = 100 * ratio;
+      document.getElementsByTagName('html')[0].style['font-size'] = fontSize + 'px';
+    }
+    linstener()
+    window.addEventListener('resize',linstener)
+  </script>
   <body>
     <noscript>
       <strong>We're sorry but vue2-element-ui-system doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
