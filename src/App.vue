@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style lang="less" >
 @import './assets/variables.less'; // 导入同一样式
- #app{
-  font-size: @font-size;
- }
- img{
-    width: 100%;
-    height: 100%;
+
+.el-message {
+  font-size: 14px;
+  /* 修改消息提示框的字体大小 */
 }
-</style>
+
+#app {
+  font-size: @font-size;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}</style>

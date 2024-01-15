@@ -3,39 +3,16 @@
         <el-container>
             <el-header>
                 <headerVue />
-            </el-header>  
+            </el-header>
             <el-container>
                 <el-aside>
-                    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-                        :collapse="isCollapse" background-color="#3498db" text-color="#fff" active-text-color="#ffd04b">
-                        <el-menu-item index="1">
-                                <i class="el-icon-location"></i>
-                                <span slot="title">首页</span>
-                        </el-menu-item>
-                        <el-submenu index="2">
-                            <template slot="title">
-                                <i class="el-icon-location"></i>
-                                <span slot="title">导航二</span>
-                            </template>
-                            <el-menu-item index="2-1">选项1</el-menu-item>
-                            <el-menu-item index="3-1">选项1</el-menu-item>
-                        </el-submenu>
-                        <el-menu-item index="3">
-                            <i class="el-icon-document"></i>
-                            <span slot="title">导航三</span>
-                        </el-menu-item>
-                        <el-menu-item index="4">
-                            <i class="el-icon-setting"></i>
-                            <span slot="title">设置</span>
-                        </el-menu-item>
-                    </el-menu>
+                    <asideVue />
                 </el-aside>
                 <el-main>
-                    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                        <el-radio-button :label="false">展开</el-radio-button>
-                        <el-radio-button :label="true">收起</el-radio-button>
-                    </el-radio-group>
-                    <router-view />
+                    <div class="routerNav">
+                        <el-tag closable size="small">标签一</el-tag>
+                    </div>
+                    <div class="content"> <router-view /></div>
                 </el-main>
             </el-container>
         </el-container>
@@ -43,17 +20,24 @@
 </template>
 <script>
 import headerVue from '../../components/layOut/header.vue';
+import asideVue from '../../components/layOut/aside.vue';
 export default {
     components: {
-        headerVue
+        headerVue,
+        asideVue
     },
     data() {
         return {
-            isCollapse: true
+
         }
+    },
+    mounted() {
+        // 获取所有的Cookie
+       
     }
 }
 </script>
+
 
 <style lang="less" scoped>
 @import '../../assets/variables.less';
@@ -80,24 +64,41 @@ export default {
     line-height: 200px;
     width: auto !important;
     overflow: hidden;
-    
+
+}
+
+.el-main {
+    box-sizing: border-box;
+    position: relative;
+    background-color: #F2F6FC;
+
 }
 
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     // min-height: 400px;
     height: 100%;
- 
+
 }
-.el-menu-vertical-demo{
+
+.el-menu-vertical-demo {
     color: #fff;
     height: 100%;
 }
 
-/deep/.el-submenu__title i {
-    color: #fff;
+.routerNav {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 5px 10px;
+    box-sizing: border-box;
 }
-/deep/.el-menu-item i{
-    color: #fff;
+
+.content {
+    margin-top: 20px;
+
 }
 </style> 
